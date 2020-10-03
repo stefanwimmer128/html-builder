@@ -50,7 +50,25 @@ render(h('xml[version="1.0" standalone=yes]', [], [
 <?xml version="1.0" standalone="yes" ?><!DOCTYPE html><html lang="en"><head><title>Hello World!</title></head><body><div class="container container-content" id="container-content-main"><a href="#" disabled>LINK</a>&lt;p&gt;TEST&lt;/p&gt;<p>TEST</p></div><!-- COMMENT --><p data-values="{&quot;a&quot;:0,&quot;b&quot;:1,&quot;c&quot;:2}"><b>LIST:</b><br /><span data-key="a">0</span><span data-key="b">1</span><span data-key="c">2</span></p></body></html>
 ```
 
-## Custom Elements
+## Special Elements
+
+The following elements are special.
+
+Thus, if you want to use the keywords as simple tags, you will have to use the special `tag` function:
+
+```php
+use function Stefanwimmer128\HtmlBuilder\render;
+use function Stefanwimmer128\HtmlBuilder\h;
+use function Stefanwimmer128\HtmlBuilder\tag;
+
+render(h('comment', 'Test'));
+render(tag('comment', 'Test'));
+```
+
+```html
+<!-- Test -->
+<comment>Test</comment>
+```
 
 ### `comment`
 

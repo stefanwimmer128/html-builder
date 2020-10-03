@@ -14,11 +14,11 @@ use Stefanwimmer128\HtmlBuilder\Utilities\HtmlBuilderUtility;
 
 if (! function_exists(__NAMESPACE__ . '\h')) {
     /**
-     * Create element from emmet
-     * @package Stefanwimmer128\HtmlBuilder
+     * Create element from input using parser (default: Emmet)
      * @param string $input
      * @param mixed ...$args
      * @return HtmlElement
+     * @package Stefanwimmer128\HtmlBuilder
      */
     function h(string $input, ...$args): HtmlElement {
         return AbstractParser::parse($input)->toElement(...$args);
@@ -28,23 +28,22 @@ if (! function_exists(__NAMESPACE__ . '\h')) {
 if (! function_exists(__NAMESPACE__ . '\tag')) {
     /**
      * Create tag element
-     * @package Stefanwimmer128\HtmlBuilder
      * @param string $tag
-     * @param array $attributes
-     * @param array $children
+     * @param mixed ...$args
      * @return HtmlTag
+     * @package Stefanwimmer128\HtmlBuilder
      */
-    function tag(string $tag, array $attributes = [], array $children = []): HtmlTag {
-        return new HtmlTag($tag, $attributes, $children);
+    function tag(string $tag = 'div', ...$args): HtmlTag {
+        return new HtmlTag($tag, ...$args);
     }
 }
 
 if (! function_exists(__NAMESPACE__ . '\text')) {
     /**
      * Create text element
-     * @package Stefanwimmer128\HtmlBuilder
      * @param string $text
      * @return HtmlText
+     * @package Stefanwimmer128\HtmlBuilder
      */
     function text(string $text): HtmlText {
         return new HtmlText($text);
@@ -53,10 +52,10 @@ if (! function_exists(__NAMESPACE__ . '\text')) {
 
 if (! function_exists(__NAMESPACE__ . '\raw')) {
     /**
-     * Create raw element
-     * @package Stefanwimmer128\HtmlBuilder
+     * Create raw string
      * @param string $value
      * @return RawString
+     * @package Stefanwimmer128\HtmlBuilder
      */
     function raw(string $value): RawString {
         return new RawString($value);
@@ -65,11 +64,11 @@ if (! function_exists(__NAMESPACE__ . '\raw')) {
 
 if (! function_exists(__NAMESPACE__ . '\capture')) {
     /**
-     * Captures output (echo) and returns it as RawString
-     * @package Stefanwimmer128\HtmlBuilder
+     * Captures output (echo) and returns it as raw string
      * @param callable $callable
      * @param mixed ...$args
      * @return RawString
+     * @package Stefanwimmer128\HtmlBuilder
      */
     function capture(callable $callable, ...$args): RawString {
         return raw(HtmlBuilderUtility::capture($callable, ...$args));
@@ -79,10 +78,10 @@ if (! function_exists(__NAMESPACE__ . '\capture')) {
 if (! function_exists(__NAMESPACE__ . '\map')) {
     /**
      * array_map with keys
-     * @package Stefanwimmer128\HtmlBuilder
      * @param array $array
      * @param callable $callable
      * @return array
+     * @package Stefanwimmer128\HtmlBuilder
      */
     function map(array $array, callable $callable): array {
         return HtmlBuilderUtility::map($array, $callable);
@@ -92,11 +91,11 @@ if (! function_exists(__NAMESPACE__ . '\map')) {
 if (! function_exists(__NAMESPACE__ . '\render')) {
     /**
      * Render elements as HTML
-     * @package Stefanwimmer128\HtmlBuilder
-     * @param mixed $elements
+     * @param mixed ...$elements
      * @return string
+     * @package Stefanwimmer128\HtmlBuilder
      */
-    function render($elements): string {
-        return (new ElementList([$elements]))->render();
+    function render(...$elements): string {
+        return (new ElementList($elements))->render();
     }
 }

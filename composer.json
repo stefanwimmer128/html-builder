@@ -1,6 +1,6 @@
 {
   "name": "stefanwimmer128/html-builder",
-  "description": "HTML Builder",
+  "description": "A fully extensible HTML-Builder supporting emmet input",
   "minimum-stability": "stable",
   "license": "ISC",
   "authors": [

@@ -6,7 +6,7 @@ A fully extensible HTML-Builder supporting emmet input
 - [Example](#example)
 - [Special Elements](#special-elements)
 - [API Documentation](#api-documentation)
-- [How to extend](#how-to-extend)
+- [Writing extensions](#writing-extensions)
 
 ## [Installation](#installation)
 
@@ -265,7 +265,7 @@ Render elements as HTML
 
 See all the above.
 
-## [How to extend](#how-to-extend)
+## [Writing extensions](#writing-extensions)
 
 - [Creating a custom element](#creating-a-custom-element)
 - [Creating a custom parser](#creating-a-custom-parser)

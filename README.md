@@ -12,7 +12,7 @@ A fully extensible HTML-Builder supporting emmet input
 - [`map(array $array, callable $callable): array`](#documentation_map) array_map with keys
 - [`render(...$elements): string`](#documentation_render) Render elements as HTML
 
-### <a name="documentation_h" /> [`h(string $input, ...$args): HtmlElement`](#documentation_h)
+### <a name="documentation_h"></a> [`h(string $input, ...$args): HtmlElement`](#documentation_h)
 
 Create element from input using parser (default: Emmet)
 
@@ -31,7 +31,7 @@ render(h('div', [], 'Some text <b>with html</b>'));
 <div>Some text &amp;lt;p&amp;gt;with html&amp;lt;/b&amp;gt;</div>
 ```
 
-### <a name="documentation_tag" /> [`tag(string $tag = 'div', ...$args): HtmlTag`](#documentation_tag)
+### <a name="documentation_tag"></a> [`tag(string $tag = 'div', ...$args): HtmlTag`](#documentation_tag)
 
 Create tag element
 
@@ -49,7 +49,7 @@ render(tag('div', ['class' => 'container'], [
 <div class="container">Text<p>Some text &amp;lt;p&amp;gt;with html&amp;lt;/b&amp;gt;</p></div>
 ```
 
-### <a name="documentation_text" /> [`text(string $text): HtmlText`](#documentation_text)
+### <a name="documentation_text"></a> [`text(string $text): HtmlText`](#documentation_text)
 
 Create text element
 
@@ -66,7 +66,7 @@ render(text('Some text <b>with html</b>'));
 Some text &amp;lt;p&amp;gt;with html&amp;lt;/b&amp;gt;
 ```
 
-### <a name="documentation_raw" /> [`raw(string $value): RawString`](#documentation_raw)
+### <a name="documentation_raw"></a> [`raw(string $value): RawString`](#documentation_raw)
 
 Create raw string
 
@@ -81,7 +81,7 @@ render(raw('Some text <b>with html</b>'));
 Some text <b>with html</b>
 ```
 
-### <a name="documentation_capture" /> [`capture(callable $callable, ...$args): RawString`](#documentation_capture)
+### <a name="documentation_capture"></a> [`capture(callable $callable, ...$args): RawString`](#documentation_capture)
 
 Captures output (echo) and returns it as raw string
 
@@ -99,7 +99,7 @@ render(tag('div', [], capture('the_widget', 'widget')));
 <div>...widget markup...</div>
 ```
 
-### <a name="documentation_map" /> [`map(array $array, callable $callable): array`](#documentation_map)
+### <a name="documentation_map"></a> [`map(array $array, callable $callable): array`](#documentation_map)
 
 array_map with keys
 
@@ -120,7 +120,7 @@ render(tag('ul', [], map($values, fn($value, $key) => tag('li', ['id' => $key], 
 <ul><li id="key0">value0</li><li id="key1">value1</li></ul>
 ```
 
-### <a name="documentation_render" /> [`render(...$elements): string`](#documentation_render)
+### <a name="documentation_render"></a> [`render(...$elements): string`](#documentation_render)
 
 Render elements as HTML
 

@@ -10,8 +10,6 @@ namespace Stefanwimmer128\HtmlBuilder;
 
 use Stefanwimmer128\HtmlBuilder\Components\ElementList;
 use Stefanwimmer128\HtmlBuilder\Parser\AbstractParser;
-use Stefanwimmer128\HtmlBuilder\Parser\EmmetNode;
-use Stefanwimmer128\HtmlBuilder\Parser\EmmetParsingException;
 use Stefanwimmer128\HtmlBuilder\Utilities\HtmlBuilderUtility;
 
 if (! function_exists(__NAMESPACE__ . '\h')) {

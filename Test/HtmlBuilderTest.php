@@ -81,6 +81,9 @@ class HtmlBuilderTest extends AbstractTestCase {
         self::assertEquals($words, str_word_count(render(h($tag))));
     }
     
+    /**
+     * @return array[]
+     */
     public function loremIpsumProvider(): array {
         return [
             'lorem' => ['lorem', 30],
@@ -102,7 +105,7 @@ class HtmlBuilderTest extends AbstractTestCase {
     }
     
     /**
-     * @return array
+     * @return array[]
      */
     public function invalidEmmetProvider(): array {
         return [
@@ -122,6 +125,9 @@ class HtmlBuilderTest extends AbstractTestCase {
         self::assertEquals(render(h(sprintf('%s > %s#test', $parent, $child))), render(h(sprintf('%s > #test', $parent))));
     }
     
+    /**
+     * @return array[]
+     */
     public function emmetImplicitTagsProvider(): array {
         return [
             'div' => ['div', 'div'],

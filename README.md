@@ -2,6 +2,12 @@
 
 A fully extensible HTML-Builder supporting emmet input
 
+## Installation
+
+```shell script
+composer require stefanwimmer128/html-builder
+```
+
 ## Documentation
 
 - [`h(string $input, ...$args): HtmlElement`](#hstring-input-args-htmlelement) Create element from input using parser (default: Emmet)

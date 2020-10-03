@@ -1,7 +1,8 @@
 {
   "name": "stefanwimmer128/html-builder",
+  "type": "library",
   "description": "A fully extensible HTML-Builder supporting emmet input",
-  "minimum-stability": "stable",
+  "homepage": "https://github.com/stefanwimmer128/html-builder",
   "license": "ISC",
   "authors": [
     {

@@ -9,8 +9,8 @@
 namespace Stefanwimmer128\HtmlBuilder\Elements;
 
 use joshtronic\LoremIpsum;
-use Stefanwimmer128\HtmlBuilder\HtmlText;
 use Stefanwimmer128\HtmlBuilder\CustomTagElement;
+use Stefanwimmer128\HtmlBuilder\HtmlText;
 
 /**
  * Class LoremIpsumElement

@@ -8,8 +8,8 @@
 
 namespace Stefanwimmer128\HtmlBuilder\Parser;
 
-use Stefanwimmer128\HtmlBuilder\Parser\Emmet\EmmetParser;
 use Stefanwimmer128\HtmlBuilder\HtmlElement;
+use Stefanwimmer128\HtmlBuilder\Parser\Emmet\EmmetParser;
 use Throwable;
 
 /**

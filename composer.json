@@ -1,0 +1,40 @@
+{
+  "name": "stefanwimmer128/html-builder",
+  "description": "HTML Builder",
+  "minimum-stability": "stable",
+  "license": "ISC",
+  "authors": [
+    {
+      "name": "Stefan Wimmer",
+      "email": "info@stefanwimmer128.eu"
+    }
+  ],
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  },
+  "require": {
+    "php": "^7.4",
+    "symfony/polyfill-php80": "^1.18",
+    "joshtronic/php-loremipsum": "^1.0"
+  },
+  "require-dev": {
+    "ext-json": "*",
+    "phpunit/phpunit": "^9.4",
+    "symfony/var-dumper": "^5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stefanwimmer128\\HtmlBuilder\\": "Classes"
+    },
+    "files": [
+      "bootstrap.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Stefanwimmer128\\HtmlBuilder\\Test\\": "Test"
+    }
+  }
+}

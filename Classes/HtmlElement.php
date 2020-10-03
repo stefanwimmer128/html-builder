@@ -12,12 +12,13 @@ use Stefanwimmer128\HtmlBuilder\Elements\CommentElement;
 use Stefanwimmer128\HtmlBuilder\Elements\DoctypeElement;
 use Stefanwimmer128\HtmlBuilder\Elements\LoremIpsumElement;
 use Stefanwimmer128\HtmlBuilder\Elements\XmlElement;
+use Stringable;
 
 /**
  * Class HtmlElement
  * @package Stefanwimmer128\HtmlBuilder
  */
-abstract class HtmlElement {
+abstract class HtmlElement implements Stringable {
     /**
      * @var string[] Elements with custom implementation
      */
@@ -68,4 +69,13 @@ abstract class HtmlElement {
      * @return string
      */
     abstract public function render(): string;
+    
+    /**
+     * Alias for render()
+     * @see HtmlElement::render()
+     * @return string
+     */
+    public function __toString() {
+        return $this->render();
+    }
 }

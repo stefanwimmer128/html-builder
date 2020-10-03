@@ -17,11 +17,10 @@ use Stefanwimmer128\HtmlBuilder\HtmlTag;
 class XmlElement extends HtmlTag {
     /**
      * Create XmlElement
-     * @param array $attributes
-     * @param array ...$children
+     * @param mixed ...$args
      */
-    public function __construct(array $attributes = [], array ...$children) {
-        parent::__construct('xml', $attributes, $children);
+    public function __construct(...$args) {
+        parent::__construct('xml', ...$args);
     }
     
     /**

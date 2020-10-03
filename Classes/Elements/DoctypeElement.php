@@ -20,9 +20,9 @@ class DoctypeElement extends HtmlTag {
     /**
      * Create DoctypeElement
      * @param string $doctype
-     * @param array ...$children
+     * @param mixed ...$children
      */
-    public function __construct(string $doctype, array ...$children) {
+    public function __construct(string $doctype, ...$children) {
         parent::__construct('doctype', [], ...$children);
         
         $this->doctype = $doctype;

@@ -50,6 +50,68 @@ render(h('xml[version="1.0" standalone=yes]', [], [
 <?xml version="1.0" standalone="yes" ?><!DOCTYPE html><html lang="en"><head><title>Hello World!</title></head><body><div class="container container-content" id="container-content-main"><a href="#" disabled>LINK</a>&lt;p&gt;TEST&lt;/p&gt;<p>TEST</p></div><!-- COMMENT --><p data-values="{&quot;a&quot;:0,&quot;b&quot;:1,&quot;c&quot;:2}"><b>LIST:</b><br /><span data-key="a">0</span><span data-key="b">1</span><span data-key="c">2</span></p></body></html>
 ```
 
+## Custom Elements
+
+### `comment`
+
+Generate HTML comment. Any string(s) or `HtmlElement`(s) can be used as children.
+
+```php
+use function Stefanwimmer128\HtmlBuilder\render;
+use function Stefanwimmer128\HtmlBuilder\h;
+
+render(h('comment', 'Test'));
+```
+
+```html
+<!-- Test -->
+```
+
+### `doctype`
+
+Generate HTML doctype. Can receive children, that will be rendered after tag.
+
+```php
+use function Stefanwimmer128\HtmlBuilder\render;
+use function Stefanwimmer128\HtmlBuilder\h;
+
+render(h('doctype', 'html', ...$children));
+```
+
+```html
+<!DOCTYPE html>...children...
+```
+
+### `lorem` / `lipsum`
+
+Generates lorem ipsum text (default: 30 words).
+
+To set the number of words to generate append it to the tag: `lorem20` generates 20 words, `lipsum40` generates 40 words.
+
+```php
+use function Stefanwimmer128\HtmlBuilder\render;
+use function Stefanwimmer128\HtmlBuilder\h;
+
+render(h('lorem50'));
+```
+
+Generates 50 words of lorem ipsum.
+
+### `xml`
+
+Create XML header. Works pretty similar to a html tag.
+
+```php
+use function Stefanwimmer128\HtmlBuilder\render;
+use function Stefanwimmer128\HtmlBuilder\h;
+
+render(h('xml[version="1.0"]', [], ...$children));
+```
+
+```html
+<?xml version="1.0" ?>...children...
+```
+
 ## API Documentation
 
 - [`h(string $input, ...$args): HtmlElement`](#hstring-input-args-htmlelement) Create element from input using parser (default: Emmet)
@@ -173,3 +235,107 @@ render(tag('ul', [], map($values, fn($value, $key) => tag('li', ['id' => $key], 
 Render elements as HTML
 
 See all the above.
+
+## How to extend?
+
+### Adding custom element
+
+Any custom element must extend `\Stefanwimmer128\HtmlBuilder\HtmlElement`.
+
+First you create your element class:
+
+```php
+use Stefanwimmer128\HtmlBuilder\HtmlElement;
+
+class CustomElement extends HtmlElement {
+    private string $someData;
+    
+    public function __construct(string $someData) {
+        $this->someData = $someData;
+    }
+    
+    public function render(): string {
+        return sprintf('(%s)', $this->someData);
+    }
+}
+```
+
+If your element is tag-like, you might want to extend `\Stefanwimmer128\HtmlBuilder\HtmlTag`:
+
+```php
+use Stefanwimmer128\HtmlBuilder\HtmlTag;
+
+class CustomElement extends HtmlTag {
+    public function __construct(...$args) {
+        parent::__construct('custom', ...$args);
+    }
+    
+    public function render(): string {
+        return sprintf('(%s)%s', $this->renderAttributes(), $this->renderChildren());
+    }
+}
+```
+
+If your custom element should receive parsed information, your element must implement `\Stefanwimmer128\HtmlBuilder\Parser\ParserCompatibleElement`.
+
+After which you have to register your element, by putting this code before your usage of the element:
+
+```php
+use Stefanwimmer128\HtmlBuilder\HtmlElement;
+
+HtmlElement::$ELEMENTS['custom'] = CustomElement::class;
+```
+
+If you want to add an element that has 
+
+### Add a custom parser
+
+Any parser must extend `\Stefanwimmer128\HtmlBuilder\Parser\AbstractParser`.
+
+Since creating a custom parser is very much tied to what you want to parse, please orientate yourself using the included `\Stefanwimmer128\HtmlBuilder\Parser\Emmet\EmmetParser`.
+
+```php
+use Stefanwimmer128\HtmlBuilder\Parser\AbstractParser;
+
+class CustomParser extends AbstractParser {
+    public function __construct(string $input) {
+        // your parsing logic goes here
+    }
+    
+    public function getTag(): string {
+        // return tag here
+    }
+    
+    public function getAttributes(): array {
+        // return attributes here
+    }
+    
+    public function getClasses(): array {
+        // return classes here
+    }
+    
+    public function getId(): ?string {
+        // return id here if provided or null
+    }
+    
+    public function getText() : ?string {
+        // return text here if provided or null
+    }
+    
+    public function getChild() : ?AbstractParser {
+        // return child here if provided or null
+    }
+    
+    public function isSelfclosing() : ?bool{
+        // return whether tag self-closes if provided or null
+    }
+}
+```
+
+After which you can set your parser by:
+
+```php
+use Stefanwimmer128\HtmlBuilder\Parser\AbstractParser;
+
+AbstractParser::$DEFAULT_PARSER = CustomParser::class;
+```

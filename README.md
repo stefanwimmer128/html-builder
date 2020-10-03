@@ -2,13 +2,19 @@
 
 A fully extensible HTML-Builder supporting emmet input
 
-## Installation
+- [Installation](#installation)
+- [Example](#example)
+- [Special Elements](#special-elements)
+- [API Documentation](#api-documentation)
+- [How to extend](#how-to-extend)
+
+## [Installation](#installation)
 
 ```shell script
 composer require stefanwimmer128/html-builder
 ```
 
-## Example
+## [Example](#example)
 
 ```php
 use function Stefanwimmer128\HtmlBuilder\render;
@@ -50,7 +56,12 @@ render(h('xml[version="1.0" standalone=yes]', [], [
 <?xml version="1.0" standalone="yes" ?><!DOCTYPE html><html lang="en"><head><title>Hello World!</title></head><body><div class="container container-content" id="container-content-main"><a href="#" disabled>LINK</a>&lt;p&gt;TEST&lt;/p&gt;<p>TEST</p></div><!-- COMMENT --><p data-values="{&quot;a&quot;:0,&quot;b&quot;:1,&quot;c&quot;:2}"><b>LIST:</b><br /><span data-key="a">0</span><span data-key="b">1</span><span data-key="c">2</span></p></body></html>
 ```
 
-## Special Elements
+## [Special Elements](#special-elements)
+
+- [`comment`](#comment)
+- [`doctype`](#doctype)
+- [`lorem` / `lipsum`](#lorem--lipsum)
+- [`xml`](#xml)
 
 The following elements are special.
 
@@ -70,7 +81,7 @@ render(tag('comment', 'Test'));
 <comment>Test</comment>
 ```
 
-### `comment`
+### [`comment`](#comment)
 
 Generate HTML comment. Any string(s) or `HtmlElement`(s) can be used as children.
 
@@ -85,7 +96,7 @@ render(h('comment', 'Test'));
 <!-- Test -->
 ```
 
-### `doctype`
+### [`doctype`](#doctype)
 
 Generate HTML doctype. Can receive children, that will be rendered after tag.
 
@@ -100,7 +111,7 @@ render(h('doctype', 'html', ...$children));
 <!DOCTYPE html>...children...
 ```
 
-### `lorem` / `lipsum`
+### [`lorem` / `lipsum`](#lorem--lipsum)
 
 Generates lorem ipsum text (default: 30 words).
 
@@ -115,7 +126,7 @@ render(h('lorem50'));
 
 Generates 50 words of lorem ipsum.
 
-### `xml`
+### [`xml`](#xml)
 
 Create XML header. Works pretty similar to a html tag.
 
@@ -130,7 +141,7 @@ render(h('xml[version="1.0"]', [], ...$children));
 <?xml version="1.0" ?>...children...
 ```
 
-## API Documentation
+## [API Documentation](#api-documentation)
 
 - [`h(string $input, ...$args): HtmlElement`](#hstring-input-args-htmlelement) Create element from input using parser (default: Emmet)
 - [`tag(string $tag = 'div', ...$args): HtmlTag`](#tagstring-tag--div-args-htmltag) Create tag element
@@ -254,9 +265,12 @@ Render elements as HTML
 
 See all the above.
 
-## How to extend?
+## [How to extend](#how-to-extend)
 
-### Adding custom element
+- [Creating a custom element](#creating-a-custom-element)
+- [Creating a custom parser](#creating-a-custom-parser)
+
+### [Creating a custom element](#creating-a-custom-element)
 
 Any custom element must extend `\Stefanwimmer128\HtmlBuilder\HtmlElement`.
 
@@ -306,7 +320,7 @@ HtmlElement::$ELEMENTS['custom'] = CustomElement::class;
 
 If you want to add an element that has 
 
-### Add a custom parser
+### [Creating a custom parser](#creating-a-custom-parser)
 
 Any parser must extend `\Stefanwimmer128\HtmlBuilder\Parser\AbstractParser`.
 

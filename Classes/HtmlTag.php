@@ -36,8 +36,7 @@ class HtmlTag extends HtmlElement implements CustomTagElement, ParserCompatibleE
      * @param mixed ...$args if fist value is an array it is considered to be the tags arguments
      */
     public function __construct(string $tag = 'div', ...$args) {
-        $this->tag = $tag;
-        
+        $this->setTag($tag);
         $this->setAttributes(count($args) > 0 && is_array($args[0]) ? array_shift($args) : []);
         $this->setChildren($args);
     }

@@ -1,5 +1,10 @@
 # stefanwimmer128/html-builder
 
+[![Version](https://img.shields.io/packagist/v/stefanwimmer128/html-builder?style=for-the-badge)](https://packagist.org/packages/stefanwimmer128/html-builder)
+[![PHP Version](https://img.shields.io/packagist/php-v/stefanwimmer128/html-builder?style=for-the-badge)](https://packagist.org/packages/stefanwimmer128/html-builder)
+[![Actions Status](https://img.shields.io/github/workflow/status/stefanwimmer128/html-builder/PHPUnit?style=for-the-badge)](https://github.com/stefanwimmer128/html-builder/actions)
+[![License](https://img.shields.io/packagist/l/stefanwimmer128/html-builder?style=for-the-badge)](https://github.com/stefanwimmer128/html-builder/blob/main/LICENSE)
+
 A fully extensible HTML-Builder supporting emmet input
 
 - [Installation](#installation)

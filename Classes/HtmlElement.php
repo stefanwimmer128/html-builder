@@ -75,7 +75,7 @@ abstract class HtmlElement implements Stringable {
      * @see HtmlElement::render()
      * @return string
      */
-    public function __toString() {
+    public function __toString(): string {
         return $this->render();
     }
 }

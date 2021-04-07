@@ -324,8 +324,6 @@ use Stefanwimmer128\HtmlBuilder\HtmlElement;
 HtmlElement::$ELEMENTS['custom'] = CustomElement::class;
 ```
 
-If you want to add an element that has 
-
 ### [Creating a custom parser](#creating-a-custom-parser)
 
 Any parser must extend `\Stefanwimmer128\HtmlBuilder\Parser\AbstractParser`.
